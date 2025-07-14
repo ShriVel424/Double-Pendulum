@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.space {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+}
+
+.stars-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+}
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate ease-in-out;
+}
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.moon {
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 40% 40%, #fffacd, #f5deb3);
+  border-radius: 50%;
+  box-shadow: 0 0 40px #fffacd;
+  z-index: 1;
+}
+
+.shooting-star {
+  position: absolute;
+  top: 0;
+  left: -200px;
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, white, rgba(255,255,255,0));
+  transform: rotate(45deg);
+  opacity: 0;
+  animation: shoot 5s infinite ease-in-out;
+  z-index: 2;
+}
+.shooting-star.delay {
+  animation-delay: 2.5s;
+}
+@keyframes shoot {
+  0% {
+    transform: translate(-200px, -200px) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(800px, 800px) rotate(45deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(800px, 800px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.pendulum-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+canvas {
+  background: transparent;
+  width: 700px;
+  height: 700px;
+  pointer-events: none;
+}
+
+.pendulum-controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 1rem;
+}
+.pendulum-controls button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+.pendulum-controls button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
